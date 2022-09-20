@@ -1,0 +1,31 @@
+{
+  "name": "pmweb-case",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">\r     ⚙️ Teste de Seleção PMWEB\r </h1>\r <p align=\"center\"> 🔥 Desenvolvimento de uma API para gerenciamento de Hóspedes de um hotel e suas reservas 🔥</p>",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon api/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/inaerosa/pmweb-case.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/inaerosa/pmweb-case/issues"
+  },
+  "homepage": "https://github.com/inaerosa/pmweb-case#readme",
+  "devDependencies": {
+    "dotenv": "^16.0.2",
+    "jest": "^29.0.3",
+    "mongoose": "^6.6.1",
+    "nodemon": "^2.0.19"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "superagent": "^8.0.0"
+  }
+}
