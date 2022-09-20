@@ -6,7 +6,7 @@ router
     .get("/:id", bookingController.getByGuest)
     .get("/:id/:status", bookingController.getByStatus)
     .post("/:id", bookingController.saveBooking)
-    .patch("/:idGuest/:idStatus", bookingController.updateStatus)
+    .patch("/:idGuest/:idBooking", bookingController.updateStatus)
     .delete("/:idGuest/:idBooking", bookingController.deleteBooking);
 
 module.exports = router;
