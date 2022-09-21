@@ -1,0 +1,339 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0", 
+      "title": "PMWEB",
+      "description": "Documentation of PMWEB case"
+    },
+    "host": "localhost:3000",
+    "basePath": "/",
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+        "/hotelGuest": {
+            "get": {
+                "tags": [
+                    "Hotel Guest"
+                ],
+                "summary": "Route that list all registers of Hotel Guest",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Hotel Guest"
+                ],
+                "summary": "Route that post a new Hotel Guest",
+                "description": "Route that post a new Hotel Guest",
+                "parameters": [
+                    {
+                        "name": "hotelGuest",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/schemas/hotelGuest"
+                        }
+                    }
+                ]
+                
+            }
+        },
+        "/hotelGuest/{id}": {
+            "get": {
+                "tags": [
+                    "Hotel Guest"
+                ],
+                "summary": "Route that list all info of some Hotel Guest",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "ID of HotelGuest",
+                      "required": true,
+                      "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400":{
+                        "description": "There isn't a hotel guest with this ID"
+                    }
+                }
+            },
+            "put": {
+                "tags": ["Hotel Guest"],
+                "summary": "Update a hotel guest",
+                "parameters": [
+                    {
+                        "name": "hotelGuest",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/schemas/hotelGuest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400":{
+                        "description": "There isn't a hotel guest with this ID"
+                    }
+                }
+            },
+            "delete": {
+                "tags": ["Hotel Guest"],
+                "summary": "Remove a hotel guest",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "ID of HotelGuest",
+                      "required": true,
+                      "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Guest removed succesfully"
+                    },
+                    "400":{
+                        "description": "There isn't a hotel guest with this ID"
+                    }
+                }
+            }
+        },
+        "/booking": {
+            "get": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Route that list all registers of Bookings",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        },
+        "/booking/{id}": {
+            "get": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Route that list all bookings by ID of Hotel Guest",
+                "parameters": [
+                    {
+                      "name": "id",
+                      "in": "path",
+                      "description": "ID of HotelGuest",
+                      "required": true,
+                      "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400":{
+                        "description": "There isn't a hotel guest with this ID"
+                    }
+                }
+            },
+            "post": {
+                "tags": ["Bookings"],
+                "summary": "Save a booking",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of HotelGuest",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking",
+                        "in": "body",
+                        "schema": {
+                            "$ref": "#/schemas/booking"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "Successful operation"
+                    },
+                    "400":{
+                        "description": "You should use some valid status like CONFIRMADA, CANCELADA, CHECKIN, CHECKOUT"
+                    }
+                }
+            }
+        },
+        "/booking/{id}/{status}": {
+            "get": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Route that list all bookings by ID of Hotel Guest",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of HotelGuest",
+                        "required": true,
+                        "type": "string"
+                      },
+                      {
+                          "name": "status",
+                          "in": "path",
+                          "description": "Status",
+                          "required": true,
+                          "type": "string"
+                      }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400":{
+                        "description": "There isn't a hotel guest with this ID"
+                    }
+                }
+            }
+        },
+        "/booking/{idGuest}/{idBooking}": {
+            "patch": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Route that edit status",
+                "parameters": [
+                    {
+                      "name": "idGuest",
+                      "in": "path",
+                      "description": "ID of HotelGuest",
+                      "required": true,
+                      "type": "string"
+                    },
+                    {
+                        "name": "idBooking",
+                        "in": "path",
+                        "description": "ID of Booking",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking",
+                        "in": "body",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "bookingStatus": {"type": "string"}
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "400":{
+                        "description": "You should use some valid status like CONFIRMADA, CANCELADA, CHECKIN, CHECKOUT"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Bookings"
+                ],
+                "summary": "Route that delete booking",
+                "parameters": [
+                    {
+                      "name": "idGuest",
+                      "in": "path",
+                      "description": "ID of HotelGuest",
+                      "required": true,
+                      "type": "string"
+                    },
+                    {
+                        "name": "idBooking",
+                        "in": "path",
+                        "description": "ID of Booking",
+                        "required": true,
+                        "type": "string"
+                    }
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Booking removed sucessfully"
+                    },
+                    "400":{
+                        "description": "There isn't a booking with this ID"
+                    }
+                }
+            }
+        }
+    },
+    "schemas": {
+        "hotelGuest": {
+            "type": "object",
+            "properties": {
+                "name": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "birthday": {
+                    "type": "string",
+                    "format": "date"
+                },
+                
+                "phone": {
+                    "type": "string"
+                },
+                "country": {
+                    "type": "string"
+                },
+                "state": {
+                    "type": "string"
+                },
+                "city": {
+                    "type": "string"
+                }
+            }
+        },
+        "booking": {
+            "type": "object",
+            "properties": {
+                "name":  {
+                    "type": "string"  
+                }, 
+                "numberRoom": {
+                    "type": "string"
+                },
+                "bookingValue": {
+                    "type": "string"
+                },
+                "bookingStart": {
+                    "type": "string",
+                    "format": "date"
+                },
+                "bookingEnd": {
+                    "type": "string",
+                    "format": "date"
+                },
+
+                "bookingStatus": {
+                    "type": "string"
+                }
+            }              
+        }
+    }
+  }
+ 
