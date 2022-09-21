@@ -17,6 +17,14 @@
   
 <br/>
 
+**Documentação**
+
+⚠️ A aplicação deve ser inicializada para que seja possível acessar a documentação ⚠️
+
+- [Swagger](http://localhost:3000/api-docs)
+
+</br>
+
   **Tecnologias** 
 
 As seguintes ferramentas foram usadas na construção do projeto:
